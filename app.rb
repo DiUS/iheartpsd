@@ -1,6 +1,14 @@
-# app.rb
-set :haml, :format => :html5
+require 'sinatra'
+require 'slim'
 
-get '/upload' do
-   :upload
+class App < Sinatra::Base
+
+  get '/upload' do
+     :upload
+  end
+
+  get '/slim_example' do
+    slim :slim_example
+  end
+
 end
