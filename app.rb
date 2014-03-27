@@ -16,16 +16,20 @@ class App < Sinatra::Base
 
 # Handle POST-request (Receive and save the uploaded file)
   post '/upload' do
-    File.open('uploads/' + params['myfile'][:filename], "w") do |f|
-      f.write(params['myfile'][:tempfile].read)
-    end
-    redirect '/process/' + /myfile
+    #File.open('uploads/' + params['myfile'][:filename], "w") do |f|
+    #  f.write(params['myfile'][:tempfile].read)
+    #end
+    redirect '/process/' + myfile
   end
 
+  get '/process/:name' do
+    "Processing #{params[:name]}!"
+  end
 
   get '/slim_example' do
     slim :slim_example
   end
+
 
   get '/hello_world_json' do
     psd_path = File.expand_path '../psds/hello_world.psd', __FILE__
