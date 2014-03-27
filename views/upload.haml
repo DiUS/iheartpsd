@@ -1,4 +1,7 @@
-%h2 Upload
-  %form{:action=>"/upload",:method=>"post",:enctype=>"multipart/form-data"}
-%input{:type=>"file",:name=>"file"}
-%input{:type=>"submit",:value=>"Upload"}
+%html
+  %body
+    %h1 File uploader!
+    %form(method="post" enctype='multipart/form-data')   
+      %input(type='file' name='myfile')    
+      %br
+      %input(type='submit' value='Upload!')
