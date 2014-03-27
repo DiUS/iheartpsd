@@ -16,10 +16,11 @@ class App < Sinatra::Base
 
 # Handle POST-request (Receive and save the uploaded file)
   post '/upload' do
-    #File.open('uploads/' + params['myfile'][:filename], "w") do |f|
-    #  f.write(params['myfile'][:tempfile].read)
-    #end
-    redirect '/process/' + myfile
+    File.open('uploads/' + params['myfile'][:filename], "w") do |f|
+      f.write(params['myfile'][:tempfile].read)
+    end
+    redirect_url = '/process/' + params['myfile'][:filename].chomp('.psd')
+    redirect redirect_url
   end
 
   get '/process/:name' do
