@@ -4,3 +4,5 @@ gem 'sinatra'
 gem 'slim'
 
 gem 'shotgun'
+
+gem 'psd'
