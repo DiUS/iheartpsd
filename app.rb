@@ -6,7 +6,13 @@ require 'json'
 class App < Sinatra::Base
 
   get '/upload' do
-     :upload
+     haml :upload
+  end
+
+  post '/upload' do
+    unless params[:file] && (tmpfile = params[:file][:tempfile]) && (name = params[:file][:filename])
+      return haml(:upload)
+    end
   end
 
   get '/slim_example' do
