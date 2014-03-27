@@ -3,6 +3,9 @@ require 'slim'
 require 'haml'
 require 'psd'
 require 'json'
+require 'recursive-open-struct'
+
+require 'pry'
 
 class App < Sinatra::Base
 
@@ -24,13 +27,28 @@ class App < Sinatra::Base
     slim :slim_example
   end
 
-  get '/hello_world' do
+  get '/hello_world_json' do
     psd_path = File.expand_path '../psds/hello_world.psd', __FILE__
     psd = PSD.new psd_path
     psd.parse!
 
     content_type 'application/json'
     psd.tree.to_hash.to_json
+  end
+
+  get '/hello_world_html' do
+    psd_path = File.expand_path '../psds/hello_world.psd', __FILE__
+    psd = PSD.new psd_path
+    psd.parse!
+
+    contents = RecursiveOpenStruct.new psd.tree.to_hash
+
+    text_node = contents.children[0][:text]
+
+    text = text_node[:value]
+    style = text_node[:font][:css]
+
+    slim :hello_world, {locals: {text: text, style: style}}
   end
 
 end

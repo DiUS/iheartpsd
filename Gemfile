@@ -7,3 +7,9 @@ gem 'slim'
 gem 'shotgun'
 
 gem 'psd'
+
+gem 'recursive-open-struct'
+
+gem 'pry'
+gem 'pry-nav'
+gem 'pry-stack_explorer'
