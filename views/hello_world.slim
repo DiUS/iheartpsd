@@ -4,7 +4,9 @@ html
     title Hello World to HTML
 
     link rel="stylesheet" type="text/css" href="/normalize.css" media="all"
+    link rel="stylesheet" type="text/css" href="/styles.css" media="all"
 
   body
-    div style="#{page_style}"
-      h1(style="#{style}") = text
+    .page style="#{page_style}"
+      .layer(style="#{layer_style}")
+        h1(style="#{style}") = text

@@ -75,7 +75,18 @@ class App < Sinatra::Base
 
     page_style = generate_page_style contents
 
-    slim :hello_world, {locals: {text: text, style: style, page_style: page_style }}
+    layer_node = contents.children[0]
+    layer = {
+      left: layer_node[:left],
+      right: layer_node[:right],
+      top: layer_node[:top],
+      bottom: layer_node[:bottom]
+    }
+    layer_style = layer.to_a.map do |position_statement|
+      "#{position_statement[0]}: #{position_statement[1]}px" 
+    end.join(';')
+
+    slim :hello_world, {locals: {layer_style: layer_style, text: text, style: style, page_style: page_style }}
   end
 
 

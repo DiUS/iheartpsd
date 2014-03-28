@@ -1,0 +1,7 @@
+.page {
+  position: relative;
+}
+
+.layer {
+  position: absolute;
+}
