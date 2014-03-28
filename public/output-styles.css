@@ -68,6 +68,12 @@ h1 .glyphicon {
 
 footer.container {
   color: #ddd;
-}.box {
-    background-color: #803528;
+}
+
+.btn-lg {
+  font-weight: bold;
+}
+
+.btn-lg i {
+  margin-left: 0.5em;
 }
