@@ -99,7 +99,6 @@ class App < Sinatra::Base
       })
     end
 
-    # slim :hello_world, {locals: {layer_style: layer_style, text: text, style: style, page_style: page_style }}
     slim :hello_world, {locals: {layers: layers, page_style: page_style }}
   end
 
