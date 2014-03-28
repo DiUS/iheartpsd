@@ -1,8 +1,4 @@
 .idea/* 
 uploads/*
-<<<<<<< HEAD
 .DS_Store
-=======
-*.DS_Store
 public/tmp/*
->>>>>>> catered for image layers
