@@ -1,7 +1,22 @@
 %html
+  %head
+    %link(rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css")
+    %link(rel="stylesheet" href="vendor/font-awesome/css/font-awesome.css")
+    %link(rel="stylesheet" href="styles.css")
+
+    %script(src="vendor/jquery-2.1.0.min.js")
+    %script(src="vendor/bootstrap/js/bootstrap.js")
   %body
-    %h1 File uploader!
-    %form(method="post" enctype='multipart/form-data')   
-      %input(type='file' name='myfile')    
-      %br
-      %input(type='submit' value='Upload!')
+    %nav.navbar.navbar-default
+      .container
+        %a.navbar-brand
+          iHeartPSD
+
+    .container
+      %h1 Choose PSD
+      %form(method="post" enctype='multipart/form-data')   
+        %input(type='file' name='myfile')    
+        %br
+        %button.btn.btn-danger(type='submit')
+          Upload
+          %i.fa.fa-upload
