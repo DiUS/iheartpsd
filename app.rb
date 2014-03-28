@@ -37,6 +37,11 @@ class App < Sinatra::Base
     PsdParser.new('./psds/hello_world.psd').parse :json
   end
 
+  get '/hello_world_alt_json' do
+    content_type 'application/json'
+    PsdParser.new('./psds/hello_world_alternative_font.psd').parse :json
+  end
+
   get '/hello_world_html' do
     contents = PsdParser.new('./psds/hello_world.psd').parse :hash
     render_html_psd contents
@@ -51,14 +56,16 @@ class App < Sinatra::Base
     text = text_node[:value]
     style = text_node[:font][:css]
     font_size = text_node[:font][:sizes][0]
-
-    # TODO - correct the font-size also
+    font_name = text_node[:font][:name]
 
     font_family = style.split(';').find do |css_directive|
       css_directive =~ /font-family\:/
     end.gsub(/font-family:/, '')
 
-    corrected_font_family = font_family.split(',').last
+    corrected_font_family = font_family
+    if font_name == 'AdobeInvisFont'
+      corrected_font_family = font_family.split(',').last
+    end
 
     style = style.split(';').select do |css_directive|
       not (css_directive =~ /font-family\:/ or css_directive =~ /font-size\:/)
