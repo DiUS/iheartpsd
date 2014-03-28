@@ -173,7 +173,7 @@ class App < Sinatra::Base
       not (css_directive =~ /font-family\:/ or css_directive =~ /font-size\:/)
     end.push('font-family: ' + corrected_font_family)
     .push("font-size: #{font_size}px")
-    .join(';')
+    .join(';') << ';'
 
     tooltip = style.gsub(/;/, ';<br>')
     puts tooltip

@@ -24,7 +24,7 @@ html
         - box_class = layer.box ? 'box': ''            
         .layer(class="#{box_class}" style="#{layer.style}")
           - if layer.text
-            h1(style="#{layer.text.style}") = layer.text.text
+            h1.text(style="#{layer.text.style}" data-toggle="tooltip" title="#{layer.text.tooltip}") = layer.text.text
       - for layer in image_layers
         .layer(style="#{layer.style}")
           img(src="#{layer.image_src}")
