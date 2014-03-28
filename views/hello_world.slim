@@ -4,10 +4,16 @@ html
     title Hello World to HTML
 
     link rel="stylesheet" type="text/css" href="/normalize.css" media="all"
-    link rel="stylesheet" type="text/css" href="/styles.css" media="all"
+    link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.css" media="all"
+    link rel="stylesheet" type="text/css" href="/output-styles.css" media="all"
 
   body
-    .page style="#{page_style}"
+    div class="title"
+      h1 HTML & CSS extracted
+      span class="glyphicon glyphicon-chevron-left"
+      span class="glyphicon glyphicon-chevron-right"
+
+    #output.page style="#{page_style}"
       - for layer in layers
         .layer(style="#{layer.style}")
           h1(style="#{layer.text.style}") = layer.text.text

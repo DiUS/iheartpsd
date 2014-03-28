@@ -1,0 +1,26 @@
+body {
+  background-color: #282828;
+  font-size: 16px;
+}
+
+#output {
+  background-color: #FFF;
+  margin: 40px auto;
+}
+
+
+.title {
+  width: 1024px;
+  margin: 40px auto;
+  color: #bbb;
+}
+
+
+h1 {
+  font-family: Gotham, "helvetica neue";
+  font-size: 2em;
+}
+
+h1 .glyphicon {
+  color: #bbb;
+}
