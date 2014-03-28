@@ -8,5 +8,6 @@ html
 
   body
     .page style="#{page_style}"
-      .layer(style="#{layer_style}")
-        h1(style="#{style}") = text
+      - for layer in layers
+        .layer(style="#{layer.style}")
+          h1(style="#{layer.text.style}") = layer.text.text

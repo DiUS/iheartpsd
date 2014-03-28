@@ -6,6 +6,8 @@ require 'json'
 
 require 'pry'
 
+require 'recursive-open-struct'
+
 require_relative 'lib/psd/psd_parser'
 
 class App < Sinatra::Base
@@ -50,43 +52,55 @@ class App < Sinatra::Base
   private
 
   def render_html_psd(contents)
-
-    text_node = contents.children[0][:text]
-
-    text = text_node[:value]
-    style = text_node[:font][:css]
-    font_size = text_node[:font][:sizes][0]
-    font_name = text_node[:font][:name]
-
-    font_family = style.split(';').find do |css_directive|
-      css_directive =~ /font-family\:/
-    end.gsub(/font-family\:/, '')
-
-    corrected_font_family = font_family
-    if font_name == 'AdobeInvisFont'
-      corrected_font_family = font_family.split(',').last
-    end
-
-    style = style.split(';').select do |css_directive|
-      not (css_directive =~ /font-family\:/ or css_directive =~ /font-size\:/)
-    end.push('font-family: ' + corrected_font_family)
-       .push("font-size: #{font_size}px") 
-       .join(';')
-
     page_style = generate_page_style contents
 
-    layer_node = contents.children[0]
-    layer = {
-      left: layer_node[:left],
-      right: layer_node[:right],
-      top: layer_node[:top],
-      bottom: layer_node[:bottom]
-    }
-    layer_style = layer.to_a.map do |position_statement|
-      "#{position_statement[0]}: #{position_statement[1]}px" 
-    end.join(';')
+    layer_nodes = contents.children.select do |child|
+      child[:type] == :layer and child[:name] != 'Background'
+    end
 
-    slim :hello_world, {locals: {layer_style: layer_style, text: text, style: style, page_style: page_style }}
+    layers = layer_nodes.map do |layer_node|
+
+      text_node = layer_node[:text]
+
+      text = text_node[:value]
+      style = text_node[:font][:css]
+      font_size = text_node[:font][:sizes][0]
+      font_name = text_node[:font][:name]
+
+      font_family = style.split(';').find do |css_directive|
+        css_directive =~ /font-family\:/
+      end.gsub(/font-family\:/, '')
+
+      corrected_font_family = font_family
+      if font_name == 'AdobeInvisFont'
+        corrected_font_family = font_family.split(',').last
+      end
+
+      style = style.split(';').select do |css_directive|
+        not (css_directive =~ /font-family\:/ or css_directive =~ /font-size\:/)
+      end.push('font-family: ' + corrected_font_family)
+         .push("font-size: #{font_size}px") 
+         .join(';')
+
+      layer = {
+        left: layer_node[:left],
+        top: layer_node[:top],
+      }
+      layer_style = layer.to_a.map do |position_statement|
+        "#{position_statement[0]}: #{position_statement[1]}px" 
+      end.join(';')
+
+      RecursiveOpenStruct.new({
+        style: layer_style,
+        text: {
+          text: text,
+          style: style
+        }
+      })
+    end
+
+    # slim :hello_world, {locals: {layer_style: layer_style, text: text, style: style, page_style: page_style }}
+    slim :hello_world, {locals: {layers: layers, page_style: page_style }}
   end
 
 
