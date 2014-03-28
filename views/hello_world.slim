@@ -20,10 +20,11 @@ html
       span class="glyphicon glyphicon-chevron-right"
 
     #output.page style="#{page_style}"
-      - for layer in layers
+      - for layer in text_layers
         - box_class = layer.box ? 'box': ''            
         .layer(class="#{box_class}" style="#{layer.style}")
-          h1(style="#{layer.text.style}") = layer.text.text
+          - if layer.text
+            h1(style="#{layer.text.style}") = layer.text.text
       - for layer in image_layers
         .layer(style="#{layer.style}")
           img(src="#{layer.image_src}")

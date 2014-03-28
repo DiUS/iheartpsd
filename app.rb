@@ -44,8 +44,9 @@ class App < Sinatra::Base
   end
 
   get '/example_html' do
-    contents = PsdParser.new("./psds/#{@@file_name}.psd").parse :hash
-    render_html_psd contents
+    raw_contents = PsdParser.new("./psds/#{@@file_name}.psd").parse(:plain).tree
+    contents = RecursiveOpenStruct.new(raw_contents.to_hash)
+    render_html_psd contents, raw_contents
   end
 
   get '/example_json' do
@@ -91,7 +92,7 @@ class App < Sinatra::Base
     end
 
     text_layer_nodes = layer_nodes.select do |layer_node|
-      layer_node[:text]
+      not layer_node[:name] =~ /IMG_/
     end
 
     text_layers = text_layer_nodes.map do |layer_node|
@@ -140,6 +141,8 @@ class App < Sinatra::Base
         image_src: "/tmp/#{image_layer.name}.png"
       })
     end
+
+    #binding.pry
 
     slim :hello_world, {locals: {text_layers: text_layers, image_layers: image_layers, page_style: page_style }}
   end
