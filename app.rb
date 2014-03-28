@@ -44,6 +44,11 @@ class App < Sinatra::Base
     PsdParser.new('./psds/hello_world_alternative_font.psd').parse :json
   end
 
+  get '/hello_world_multi' do
+    content_type 'application/json'
+    PsdParser.new('./psds/hello_world_multi_styles.psd').parse :json
+  end
+
   get '/hello_world_html' do
     contents = PsdParser.new('./psds/hello_world.psd').parse :hash
     render_html_psd contents

@@ -24,3 +24,11 @@ h1 {
 h1 .glyphicon {
   color: #bbb;
 }
+
+.page {
+  position: relative;
+}
+
+.layer {
+  position: absolute;
+}
