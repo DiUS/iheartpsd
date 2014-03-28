@@ -50,6 +50,9 @@ class App < Sinatra::Base
 
     text = text_node[:value]
     style = text_node[:font][:css]
+    font_size = text_node[:font][:sizes][0]
+
+    # TODO - correct the font-size also
 
     font_family = style.split(';').find do |css_directive|
       css_directive =~ /font-family\:/
@@ -58,8 +61,10 @@ class App < Sinatra::Base
     corrected_font_family = font_family.split(',').last
 
     style = style.split(';').select do |css_directive|
-      not css_directive =~ /font-family\:/
-    end.push('font-family: ' + corrected_font_family).join(';')
+      not (css_directive =~ /font-family\:/ or css_directive =~ /font-size\:/)
+    end.push('font-family: ' + corrected_font_family)
+       .push("font-size: #{font_size}px") 
+       .join(';')
 
     slim :hello_world, {locals: {text: text, style: style}}
   end
