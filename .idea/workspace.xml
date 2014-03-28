@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a68613b-9478-40fd-9405-d5df28bb353d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.rb" afterPath="$PROJECT_DIR$/app.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/hello_world.slim" afterPath="$PROJECT_DIR$/views/hello_world.slim" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="iheartpsd.iws" />
@@ -57,7 +55,7 @@
           <file leaf-file-name="app.rb" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="65" column="82" selection-start="1626" selection-end="1626" vertical-scroll-proportion="0.663144" vertical-offset="473" max-vertical-offset="1230">
+                <state line="41" column="0" selection-start="928" selection-end="928" vertical-scroll-proportion="0.2926491" vertical-offset="404" max-vertical-offset="1410">
                   <folding />
                 </state>
               </provider>
@@ -66,7 +64,7 @@
           <file leaf-file-name="hello_world.slim" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/views/hello_world.slim">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="9" column="6" selection-start="176" selection-end="176" vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="225">
+                <state line="9" column="6" selection-start="176" selection-end="176" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="225">
                   <folding />
                 </state>
               </provider>
@@ -124,7 +122,7 @@
           <file leaf-file-name="psd_parser.rb" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/psd/psd_parser.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="13" column="29" selection-start="310" selection-end="310" vertical-scroll-proportion="0.25" vertical-offset="0" max-vertical-offset="780">
+                <state line="13" column="29" selection-start="310" selection-end="310" vertical-scroll-proportion="0.2542373" vertical-offset="0" max-vertical-offset="767">
                   <folding />
                 </state>
               </provider>
@@ -150,8 +148,8 @@
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/config.ru" />
         <option value="$PROJECT_DIR$/lib/psd/psd_parser.rb" />
-        <option value="$PROJECT_DIR$/app.rb" />
         <option value="$PROJECT_DIR$/views/hello_world.slim" />
+        <option value="$PROJECT_DIR$/app.rb" />
       </list>
     </option>
   </component>
@@ -186,6 +184,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -252,7 +251,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -398,7 +396,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2639485" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2639485" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -428,9 +426,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2639485" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -452,6 +450,74 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/config.ru">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="46" selection-start="64" selection-end="64" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="120">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="9" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="315">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/psds/hello_world_multi.psd">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="36" selection-start="1586" selection-end="1586" vertical-scroll-proportion="0.0" vertical-offset="975" max-vertical-offset="1410">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/hello_world.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="6" selection-start="176" selection-end="176" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="225">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="106" selection-end="154" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="225">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/slim_example.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/upload.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="32" selection-start="0" selection-end="163" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="135">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/upload.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="19" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="195">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/psd/psd_parser.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="6" selection-start="175" selection-end="175" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="315">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config.ru">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="46" selection-start="64" selection-end="64" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="120">
@@ -681,7 +747,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/hello_world.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="6" selection-start="176" selection-end="176" vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="225">
+        <state line="9" column="6" selection-start="176" selection-end="176" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="225">
           <folding />
         </state>
       </provider>
@@ -695,7 +761,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="82" selection-start="1626" selection-end="1626" vertical-scroll-proportion="0.663144" vertical-offset="473" max-vertical-offset="1230">
+        <state line="41" column="0" selection-start="928" selection-end="928" vertical-scroll-proportion="0.2926491" vertical-offset="404" max-vertical-offset="1410">
           <folding />
         </state>
       </provider>
