@@ -1,7 +1,13 @@
-%h1 Choose PSD
-%form(method="post" enctype='multipart/form-data')   
-  %input(type='file' name='myfile')    
-  %br
-  %button.btn.btn-danger(type='submit')
-    Upload
-    %i.fa.fa-upload
+%div.jumbotron
+  %h1 Choose a PSD
+  %form(method="post" enctype='multipart/form-data')   
+    %input.file(type='file' name='myfile')    
+    %div.controls
+      %button.btn.btn-danger.btn-lg(type='submit')
+        Upload
+        %i.fa.fa-upload
+
+  
+
+
+
