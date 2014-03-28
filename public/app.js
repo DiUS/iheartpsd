@@ -1,7 +1,8 @@
 $(document).ready(function() {
   $('.text').tooltip({
     html: true,
-    trigger: 'click'
+    trigger: 'click',
+    container: 'body'
   });
 
   ZeroClipboard.config({ moviePath: "/vendor/zeroclipboard/ZeroClipboard.swf" });

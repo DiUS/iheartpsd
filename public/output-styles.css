@@ -44,6 +44,11 @@ h1 .glyphicon {
   border: 2px dashed #c00;
 }
 
+
+.tooltip .tooltip-inner {
+  text-align: left;
+  position: relative;
+}
 .box {
     background-color: #803528;
 }
