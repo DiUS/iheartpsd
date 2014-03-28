@@ -32,3 +32,14 @@ h1 .glyphicon {
 .layer {
   position: absolute;
 }
+
+.text {
+  cursor: pointer;
+  border: 2px dashed rgba(0, 0, 0, 0);
+  border-radius: 3px;
+}
+
+.text:hover {
+  background-color: #eee;
+  border: 2px dashed #c00;
+}

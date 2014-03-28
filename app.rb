@@ -83,9 +83,10 @@ class App < Sinatra::Base
 
       style = style.split(';').select do |css_directive|
         not (css_directive =~ /font-family\:/ or css_directive =~ /font-size\:/)
-      end.push('font-family: ' + corrected_font_family)
+      end.push('font-family:' + corrected_font_family)
          .push("font-size: #{font_size}px") 
          .join(';')
+      style += ';'
 
       layer = {
         left: layer_node[:left],
@@ -95,12 +96,16 @@ class App < Sinatra::Base
         "#{position_statement[0]}: #{position_statement[1]}px" 
       end.join(';')
 
+      tooltip = style.gsub(/;/, ';<br>')
+      puts tooltip
+
       RecursiveOpenStruct.new({
         style: layer_style,
         text: {
           text: text,
           style: style
-        }
+        },
+        tooltip: tooltip
       })
     end
 

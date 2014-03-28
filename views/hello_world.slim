@@ -6,6 +6,12 @@ html
     link rel="stylesheet" type="text/css" href="/normalize.css" media="all"
     link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.css" media="all"
     link rel="stylesheet" type="text/css" href="/output-styles.css" media="all"
+    
+    script src="/vendor/jquery-2.1.0.min.js"
+    script src="/vendor/bootstrap/js/bootstrap.js"
+    script src="/vendor/zeroclipboard/ZeroClipboard.js"
+
+    script src="/app.js"
 
   body
     div class="title"
@@ -16,4 +22,4 @@ html
     #output.page style="#{page_style}"
       - for layer in layers
         .layer(style="#{layer.style}")
-          h1(style="#{layer.text.style}") = layer.text.text
+          h1.text(style="#{layer.text.style}" data-toggle="tooltip" title="#{layer.tooltip}") = layer.text.text
