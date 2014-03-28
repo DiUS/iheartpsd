@@ -1,0 +1,11 @@
+.page {
+  position: relative;
+}
+
+.layer {
+  position: absolute;
+}
+
+.box {
+    background-color: #808080;
+}

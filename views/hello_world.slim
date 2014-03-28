@@ -20,13 +20,9 @@ html
       span class="glyphicon glyphicon-chevron-right"
 
     #output.page style="#{page_style}"
-      - for layer in text_layers
+      - for layer in layers
         .layer(style="#{layer.style}")
-<<<<<<< HEAD
-          h1.text(style="#{layer.text.style}" data-toggle="tooltip" title="#{layer.tooltip}") = layer.text.text
-=======
           h1(style="#{layer.text.style}") = layer.text.text
       - for layer in image_layers
         .layer(style="#{layer.style}")
           img(src="#{layer.image_src}")
->>>>>>> catered for image layers
