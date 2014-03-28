@@ -53,6 +53,16 @@ class App < Sinatra::Base
     text = text_node[:value]
     style = text_node[:font][:css]
 
+    font_family = style.split(';').find do |css_directive|
+      css_directive =~ /font-family\:/
+    end.gsub(/font-family:/, '')
+
+    corrected_font_family = font_family.split(',').last
+
+    style = style.split(';').select do |css_directive|
+      not css_directive =~ /font-family\:/
+    end.push('font-family: ' + corrected_font_family).join(';')
+
     slim :hello_world, {locals: {text: text, style: style}}
   end
 
