@@ -73,7 +73,17 @@ class App < Sinatra::Base
        .push("font-size: #{font_size}px") 
        .join(';')
 
-    slim :hello_world, {locals: {text: text, style: style}}
+    page_style = generate_page_style contents
+
+    slim :hello_world, {locals: {text: text, style: style, page_style: page_style }}
+  end
+
+
+  def generate_page_style(contents)
+    height = contents.document.width
+    width = contents.document.height
+
+    "height:#{height}px; width:#{width}px;border:1px solid black;"
   end
 
 end
