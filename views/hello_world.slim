@@ -21,7 +21,8 @@ html
 
     #output.page style="#{page_style}"
       - for layer in layers
-        .layer(style="#{layer.style}")
+        - box_class = layer.box ? 'box': ''            
+        .layer(class="#{box_class}" style="#{layer.style}")
           h1(style="#{layer.text.style}") = layer.text.text
       - for layer in image_layers
         .layer(style="#{layer.style}")

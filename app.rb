@@ -97,15 +97,25 @@ class App < Sinatra::Base
     text_layers = text_layer_nodes.map do |layer_node|
 
       layer_hash = {}
-      layer_hash.merge!({text: generate_text_element(layer_node)}) if layer_node[:text]
-      layer_hash.merge!({box: generate_box_element(layer_node)}) if(layer_node[:name] =~ /Rectangle.*/)
+      layer_style_hash = {}
+      if layer_node[:text]
+       layer_hash.merge!({text: generate_text_element(layer_node)})
+       layer_style_hash.merge!({left: layer_node[:left], top: layer_node[:top]})
+       layer_style = layer_style_hash.to_a.map do |position_statement|
+         "#{position_statement[0]}: #{position_statement[1]}px"
+       end.join(';')
 
-      layer_style_hash = {left: layer_node[:left], top: layer_node[:top]}
-      layer_style = layer_style_hash.to_a.map do |position_statement|
-        "#{position_statement[0]}: #{position_statement[1]}px"
-      end.join(';')
+       layer_hash.merge!({style: layer_style})
 
-      layer_hash.merge!({style: layer_style})
+      elsif(layer_node[:name] =~ /Rectangle.*/)
+        layer_hash.merge!(style: generate_style_from_hash({left: layer_node[:left],
+                                                    #right: layer_node[:right],
+                                                    top: layer_node[:top],
+                                                    #bottom: layer_node[:bottom],
+                                                    width: layer_node[:width],
+                                                    height: layer_node[:height]}),
+                          box: true)
+      end
 
       RecursiveOpenStruct.new(layer_hash)
     end
@@ -170,13 +180,7 @@ class App < Sinatra::Base
 
   def generate_box_element(layer_node)
 
-    box_style_hash = {
-      left: layer_node[:left],
-      right: layer_node[:right],
-      top: layer_node[:top],
-      bottom: layer_node[:bottom]
-    }
-
+    box_style_hash = { left: layer_node[:left], right: layer_node[:right], top: layer_node[:top], bottom: layer_node[:bottom]}
 
     layer_style = generate_style_from_hash(box_style_hash) + ';background: grey;'
 
