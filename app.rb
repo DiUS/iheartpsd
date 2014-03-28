@@ -60,7 +60,7 @@ class App < Sinatra::Base
 
     font_family = style.split(';').find do |css_directive|
       css_directive =~ /font-family\:/
-    end.gsub(/font-family:/, '')
+    end.gsub(/font-family\:/, '')
 
     corrected_font_family = font_family
     if font_name == 'AdobeInvisFont'
