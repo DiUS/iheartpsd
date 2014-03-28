@@ -12,7 +12,7 @@ class App < Sinatra::Base
 
 # Handle GET-request (Show the upload form)
   get '/upload' do
-    haml :upload
+    haml :upload, layout: :layout
   end
 
 # Handle POST-request (Receive and save the uploaded file)
