@@ -10,6 +10,7 @@ class PsdParser
 
   def parse(type = :hash)
     @psd.parse!
+    return @psd if type == :plain
     return RecursiveOpenStruct.new(@psd.tree.to_hash) if type == :hash
     return @psd.tree.to_hash.to_json if type == :json
   end

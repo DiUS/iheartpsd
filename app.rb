@@ -27,7 +27,9 @@ class App < Sinatra::Base
   end
 
   get '/process/:name' do
-    render_html_psd  PsdParser.new("./uploads/#{params[:name]}.psd").parse(:hash)
+    raw_contents = PsdParser.new("./uploads/#{params[:name]}.psd").parse(:plain).tree
+    contents = RecursiveOpenStruct.new(raw_contents.to_hash)
+    render_html_psd contents, raw_contents
   end
 
   get '/slim_example' do
@@ -46,24 +48,41 @@ class App < Sinatra::Base
 
   get '/hello_world_multi' do
     content_type 'application/json'
-    PsdParser.new('./psds/hello_world_multi_styles.psd').parse :json
+    PsdParser.new('./psds/image.psd').parse :json
+  end
+
+  get '/image_raw_ouput' do
+    psd = PsdParser.new('./psds/image.psd').parse(:plain)
+    content_type 'text/plain'
+    "#{psd.layer_comps}"
+  end
+
+  get '/image_html' do
+    raw_contents = PsdParser.new('./psds/image.psd').parse(:plain).tree
+    contents = RecursiveOpenStruct.new(raw_contents.to_hash)
+    render_html_psd contents, raw_contents
   end
 
   get '/hello_world_html' do
-    contents = PsdParser.new('./psds/hello_world.psd').parse :hash
-    render_html_psd contents
+    raw_contents = PsdParser.new('./psds/hello_world_multi_styles.psd').parse(:plain).tree
+    contents = RecursiveOpenStruct.new(raw_contents.to_hash)
+    render_html_psd contents, raw_contents
   end
 
   private
 
-  def render_html_psd(contents)
+  def render_html_psd(contents, raw_contents)
     page_style = generate_page_style contents
 
     layer_nodes = contents.children.select do |child|
       child[:type] == :layer and child[:name] != 'Background'
     end
 
-    layers = layer_nodes.map do |layer_node|
+    text_layer_nodes = layer_nodes.select do |layer_node|
+      layer_node[:text]
+    end
+
+    text_layers = text_layer_nodes.map do |layer_node|
 
       text_node = layer_node[:text]
 
@@ -109,7 +128,28 @@ class App < Sinatra::Base
       })
     end
 
-    slim :hello_world, {locals: {layers: layers, page_style: page_style }}
+    image_layer_nodes = raw_contents.descendant_layers.select do |layer_node|
+      layer_node.name =~ /IMG_/
+    end
+
+    image_layers = image_layer_nodes.map do |image_layer|
+      image_layer.save_as_png "./public/tmp/#{image_layer.name}.png"
+
+      layer = {
+        left: image_layer.left,
+        top: image_layer.top,
+      }
+      layer_style = layer.to_a.map do |position_statement|
+        "#{position_statement[0]}: #{position_statement[1]}px" 
+      end.join(';')
+
+      RecursiveOpenStruct.new({
+        style: layer_style,
+        image_src: "/tmp/#{image_layer.name}.png"
+      })
+    end
+
+    slim :hello_world, {locals: {text_layers: text_layers, image_layers: image_layers, page_style: page_style }}
   end
 
 
