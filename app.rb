@@ -1,11 +1,12 @@
 require 'sinatra'
 require 'slim'
 require 'haml'
-require 'psd'
+
 require 'json'
-require 'recursive-open-struct'
 
 require 'pry'
+
+require_relative 'lib/psd/psd_parser'
 
 class App < Sinatra::Base
 
@@ -24,29 +25,26 @@ class App < Sinatra::Base
   end
 
   get '/process/:name' do
-    "Processing #{params[:name]}!"
+    render_html_psd  PsdParser.new("./uploads/#{params[:name]}.psd").parse(:hash)
   end
 
   get '/slim_example' do
     slim :slim_example
   end
 
-
   get '/hello_world_json' do
-    psd_path = File.expand_path '../psds/hello_world.psd', __FILE__
-    psd = PSD.new psd_path
-    psd.parse!
-
     content_type 'application/json'
-    psd.tree.to_hash.to_json
+    PsdParser.new('./psds/hello_world.psd').parse :json
   end
 
   get '/hello_world_html' do
-    psd_path = File.expand_path '../psds/hello_world.psd', __FILE__
-    psd = PSD.new psd_path
-    psd.parse!
+    contents = PsdParser.new('./psds/hello_world.psd').parse :hash
+    render_html_psd contents
+  end
 
-    contents = RecursiveOpenStruct.new psd.tree.to_hash
+  private
+
+  def render_html_psd(contents)
 
     text_node = contents.children[0][:text]
 
